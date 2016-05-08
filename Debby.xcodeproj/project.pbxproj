@@ -1,0 +1,655 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B76DAFC61CDDB9F00067C556 /* Calculate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76DAFC51CDDB9F00067C556 /* Calculate.swift */; };
+		B76DAFC81CDF90B20067C556 /* Expence.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76DAFC71CDF90B20067C556 /* Expence.swift */; };
+		B773ED6B1CD6012700A8027E /* popSalaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B773ED6A1CD6012700A8027E /* popSalaryViewController.swift */; };
+		B773ED6D1CD60E0E00A8027E /* settingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B773ED6C1CD60E0E00A8027E /* settingViewController.swift */; };
+		B773ED6F1CD61C1500A8027E /* expenseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B773ED6E1CD61C1500A8027E /* expenseTableViewController.swift */; };
+		B773ED711CD6266100A8027E /* DebtTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B773ED701CD6266100A8027E /* DebtTableViewController.swift */; };
+		B773ED731CD62E1C00A8027E /* addDebtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B773ED721CD62E1C00A8027E /* addDebtViewController.swift */; };
+		B796E30B1CD3430900F26CFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B796E30A1CD3430900F26CFA /* AppDelegate.swift */; };
+		B796E30D1CD3430900F26CFA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B796E30C1CD3430900F26CFA /* ViewController.swift */; };
+		B796E3101CD3430900F26CFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B796E30E1CD3430900F26CFA /* Main.storyboard */; };
+		B796E3131CD3430900F26CFA /* Debby.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B796E3111CD3430900F26CFA /* Debby.xcdatamodeld */; };
+		B796E3151CD3430900F26CFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B796E3141CD3430900F26CFA /* Assets.xcassets */; };
+		B796E3181CD3430900F26CFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B796E3161CD3430900F26CFA /* LaunchScreen.storyboard */; };
+		B796E3231CD3430900F26CFA /* DebbyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B796E3221CD3430900F26CFA /* DebbyTests.swift */; };
+		B796E32E1CD3430900F26CFA /* DebbyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B796E32D1CD3430900F26CFA /* DebbyUITests.swift */; };
+		B796E33C1CD34B5A00F26CFA /* mainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B796E33B1CD34B5A00F26CFA /* mainPageViewController.swift */; };
+		B7D302AD1CDA524100A04437 /* Income.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D302AC1CDA524100A04437 /* Income.swift */; };
+		C714F06BDD0BC3CE9036841F /* Pods_Debby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A26329C5830F20A71E66251 /* Pods_Debby.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B796E31F1CD3430900F26CFA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B796E2FF1CD3430900F26CFA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B796E3061CD3430900F26CFA;
+			remoteInfo = Debby;
+		};
+		B796E32A1CD3430900F26CFA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B796E2FF1CD3430900F26CFA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B796E3061CD3430900F26CFA;
+			remoteInfo = Debby;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		11DC6F98B776BD7D17697CEA /* Pods-Debby.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Debby.release.xcconfig"; path = "Pods/Target Support Files/Pods-Debby/Pods-Debby.release.xcconfig"; sourceTree = "<group>"; };
+		7A26329C5830F20A71E66251 /* Pods_Debby.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Debby.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A370200D7CEF75E7E8FE2CC0 /* Pods-Debby.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Debby.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Debby/Pods-Debby.debug.xcconfig"; sourceTree = "<group>"; };
+		B76DAFC51CDDB9F00067C556 /* Calculate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calculate.swift; sourceTree = "<group>"; };
+		B76DAFC71CDF90B20067C556 /* Expence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expence.swift; sourceTree = "<group>"; };
+		B773ED6A1CD6012700A8027E /* popSalaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = popSalaryViewController.swift; sourceTree = "<group>"; };
+		B773ED6C1CD60E0E00A8027E /* settingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settingViewController.swift; sourceTree = "<group>"; };
+		B773ED6E1CD61C1500A8027E /* expenseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = expenseTableViewController.swift; sourceTree = "<group>"; };
+		B773ED701CD6266100A8027E /* DebtTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebtTableViewController.swift; sourceTree = "<group>"; };
+		B773ED721CD62E1C00A8027E /* addDebtViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addDebtViewController.swift; sourceTree = "<group>"; };
+		B796E3071CD3430900F26CFA /* Debby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Debby.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B796E30A1CD3430900F26CFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B796E30C1CD3430900F26CFA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B796E30F1CD3430900F26CFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B796E3121CD3430900F26CFA /* Debby.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Debby.xcdatamodel; sourceTree = "<group>"; };
+		B796E3141CD3430900F26CFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B796E3171CD3430900F26CFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B796E3191CD3430900F26CFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B796E31E1CD3430900F26CFA /* DebbyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DebbyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B796E3221CD3430900F26CFA /* DebbyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebbyTests.swift; sourceTree = "<group>"; };
+		B796E3241CD3430900F26CFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B796E3291CD3430900F26CFA /* DebbyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DebbyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B796E32D1CD3430900F26CFA /* DebbyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebbyUITests.swift; sourceTree = "<group>"; };
+		B796E32F1CD3430900F26CFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B796E33B1CD34B5A00F26CFA /* mainPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mainPageViewController.swift; sourceTree = "<group>"; };
+		B7D302AC1CDA524100A04437 /* Income.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Income.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B796E3041CD3430900F26CFA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C714F06BDD0BC3CE9036841F /* Pods_Debby.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B796E31B1CD3430900F26CFA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B796E3261CD3430900F26CFA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4710AB434331152ECB2459D1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7A26329C5830F20A71E66251 /* Pods_Debby.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B796E2FE1CD3430900F26CFA = {
+			isa = PBXGroup;
+			children = (
+				B796E3091CD3430900F26CFA /* Debby */,
+				B796E3211CD3430900F26CFA /* DebbyTests */,
+				B796E32C1CD3430900F26CFA /* DebbyUITests */,
+				B796E3081CD3430900F26CFA /* Products */,
+				D06E5D3C5D29D7AE901FF04F /* Pods */,
+				4710AB434331152ECB2459D1 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B796E3081CD3430900F26CFA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B796E3071CD3430900F26CFA /* Debby.app */,
+				B796E31E1CD3430900F26CFA /* DebbyTests.xctest */,
+				B796E3291CD3430900F26CFA /* DebbyUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B796E3091CD3430900F26CFA /* Debby */ = {
+			isa = PBXGroup;
+			children = (
+				B796E30A1CD3430900F26CFA /* AppDelegate.swift */,
+				B796E30C1CD3430900F26CFA /* ViewController.swift */,
+				B796E30E1CD3430900F26CFA /* Main.storyboard */,
+				B796E3141CD3430900F26CFA /* Assets.xcassets */,
+				B796E3161CD3430900F26CFA /* LaunchScreen.storyboard */,
+				B796E3191CD3430900F26CFA /* Info.plist */,
+				B796E3111CD3430900F26CFA /* Debby.xcdatamodeld */,
+				B796E33B1CD34B5A00F26CFA /* mainPageViewController.swift */,
+				B773ED6A1CD6012700A8027E /* popSalaryViewController.swift */,
+				B773ED6C1CD60E0E00A8027E /* settingViewController.swift */,
+				B773ED6E1CD61C1500A8027E /* expenseTableViewController.swift */,
+				B773ED701CD6266100A8027E /* DebtTableViewController.swift */,
+				B773ED721CD62E1C00A8027E /* addDebtViewController.swift */,
+				B7D302AC1CDA524100A04437 /* Income.swift */,
+				B76DAFC51CDDB9F00067C556 /* Calculate.swift */,
+				B76DAFC71CDF90B20067C556 /* Expence.swift */,
+			);
+			path = Debby;
+			sourceTree = "<group>";
+		};
+		B796E3211CD3430900F26CFA /* DebbyTests */ = {
+			isa = PBXGroup;
+			children = (
+				B796E3221CD3430900F26CFA /* DebbyTests.swift */,
+				B796E3241CD3430900F26CFA /* Info.plist */,
+			);
+			path = DebbyTests;
+			sourceTree = "<group>";
+		};
+		B796E32C1CD3430900F26CFA /* DebbyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B796E32D1CD3430900F26CFA /* DebbyUITests.swift */,
+				B796E32F1CD3430900F26CFA /* Info.plist */,
+			);
+			path = DebbyUITests;
+			sourceTree = "<group>";
+		};
+		D06E5D3C5D29D7AE901FF04F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A370200D7CEF75E7E8FE2CC0 /* Pods-Debby.debug.xcconfig */,
+				11DC6F98B776BD7D17697CEA /* Pods-Debby.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B796E3061CD3430900F26CFA /* Debby */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B796E3321CD3430900F26CFA /* Build configuration list for PBXNativeTarget "Debby" */;
+			buildPhases = (
+				C4777A172F41225BA71ED37F /* Check Pods Manifest.lock */,
+				B796E3031CD3430900F26CFA /* Sources */,
+				B796E3041CD3430900F26CFA /* Frameworks */,
+				B796E3051CD3430900F26CFA /* Resources */,
+				DF837329485475344E6ECC1A /* Embed Pods Frameworks */,
+				DD3E5D8A58C57C8F04BB6447 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Debby;
+			productName = Debby;
+			productReference = B796E3071CD3430900F26CFA /* Debby.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B796E31D1CD3430900F26CFA /* DebbyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B796E3351CD3430900F26CFA /* Build configuration list for PBXNativeTarget "DebbyTests" */;
+			buildPhases = (
+				B796E31A1CD3430900F26CFA /* Sources */,
+				B796E31B1CD3430900F26CFA /* Frameworks */,
+				B796E31C1CD3430900F26CFA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B796E3201CD3430900F26CFA /* PBXTargetDependency */,
+			);
+			name = DebbyTests;
+			productName = DebbyTests;
+			productReference = B796E31E1CD3430900F26CFA /* DebbyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B796E3281CD3430900F26CFA /* DebbyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B796E3381CD3430900F26CFA /* Build configuration list for PBXNativeTarget "DebbyUITests" */;
+			buildPhases = (
+				B796E3251CD3430900F26CFA /* Sources */,
+				B796E3261CD3430900F26CFA /* Frameworks */,
+				B796E3271CD3430900F26CFA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B796E32B1CD3430900F26CFA /* PBXTargetDependency */,
+			);
+			name = DebbyUITests;
+			productName = DebbyUITests;
+			productReference = B796E3291CD3430900F26CFA /* DebbyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B796E2FF1CD3430900F26CFA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = Tanakorn;
+				TargetAttributes = {
+					B796E3061CD3430900F26CFA = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = WYLP742538;
+					};
+					B796E31D1CD3430900F26CFA = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = WYLP742538;
+						TestTargetID = B796E3061CD3430900F26CFA;
+					};
+					B796E3281CD3430900F26CFA = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = WYLP742538;
+						TestTargetID = B796E3061CD3430900F26CFA;
+					};
+				};
+			};
+			buildConfigurationList = B796E3021CD3430900F26CFA /* Build configuration list for PBXProject "Debby" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B796E2FE1CD3430900F26CFA;
+			productRefGroup = B796E3081CD3430900F26CFA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B796E3061CD3430900F26CFA /* Debby */,
+				B796E31D1CD3430900F26CFA /* DebbyTests */,
+				B796E3281CD3430900F26CFA /* DebbyUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B796E3051CD3430900F26CFA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B796E3181CD3430900F26CFA /* LaunchScreen.storyboard in Resources */,
+				B796E3151CD3430900F26CFA /* Assets.xcassets in Resources */,
+				B796E3101CD3430900F26CFA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B796E31C1CD3430900F26CFA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B796E3271CD3430900F26CFA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C4777A172F41225BA71ED37F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DD3E5D8A58C57C8F04BB6447 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Debby/Pods-Debby-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DF837329485475344E6ECC1A /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Debby/Pods-Debby-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B796E3031CD3430900F26CFA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B773ED6F1CD61C1500A8027E /* expenseTableViewController.swift in Sources */,
+				B773ED731CD62E1C00A8027E /* addDebtViewController.swift in Sources */,
+				B773ED6B1CD6012700A8027E /* popSalaryViewController.swift in Sources */,
+				B796E33C1CD34B5A00F26CFA /* mainPageViewController.swift in Sources */,
+				B796E30D1CD3430900F26CFA /* ViewController.swift in Sources */,
+				B796E30B1CD3430900F26CFA /* AppDelegate.swift in Sources */,
+				B796E3131CD3430900F26CFA /* Debby.xcdatamodeld in Sources */,
+				B76DAFC61CDDB9F00067C556 /* Calculate.swift in Sources */,
+				B76DAFC81CDF90B20067C556 /* Expence.swift in Sources */,
+				B773ED711CD6266100A8027E /* DebtTableViewController.swift in Sources */,
+				B7D302AD1CDA524100A04437 /* Income.swift in Sources */,
+				B773ED6D1CD60E0E00A8027E /* settingViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B796E31A1CD3430900F26CFA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B796E3231CD3430900F26CFA /* DebbyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B796E3251CD3430900F26CFA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B796E32E1CD3430900F26CFA /* DebbyUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B796E3201CD3430900F26CFA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B796E3061CD3430900F26CFA /* Debby */;
+			targetProxy = B796E31F1CD3430900F26CFA /* PBXContainerItemProxy */;
+		};
+		B796E32B1CD3430900F26CFA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B796E3061CD3430900F26CFA /* Debby */;
+			targetProxy = B796E32A1CD3430900F26CFA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B796E30E1CD3430900F26CFA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B796E30F1CD3430900F26CFA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B796E3161CD3430900F26CFA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B796E3171CD3430900F26CFA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B796E3301CD3430900F26CFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B796E3311CD3430900F26CFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B796E3331CD3430900F26CFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A370200D7CEF75E7E8FE2CC0 /* Pods-Debby.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/realm-swift-0.100.0/ios/swift-2.2",
+					"$(PROJECT_DIR)/realm-swift-0.100.0/osx/swift-2.2",
+					"$(PROJECT_DIR)/realm-swift-0.100.0/tvos",
+					"$(PROJECT_DIR)/realm-swift-0.100.0/watchos",
+				);
+				INFOPLIST_FILE = Debby/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Nont.Debby;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B796E3341CD3430900F26CFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11DC6F98B776BD7D17697CEA /* Pods-Debby.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/realm-swift-0.100.0/ios/swift-2.2",
+					"$(PROJECT_DIR)/realm-swift-0.100.0/osx/swift-2.2",
+					"$(PROJECT_DIR)/realm-swift-0.100.0/tvos",
+					"$(PROJECT_DIR)/realm-swift-0.100.0/watchos",
+				);
+				INFOPLIST_FILE = Debby/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Nont.Debby;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		B796E3361CD3430900F26CFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DebbyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Nont.DebbyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Debby.app/Debby";
+			};
+			name = Debug;
+		};
+		B796E3371CD3430900F26CFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DebbyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Nont.DebbyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Debby.app/Debby";
+			};
+			name = Release;
+		};
+		B796E3391CD3430900F26CFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = DebbyUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Nont.DebbyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Debby;
+			};
+			name = Debug;
+		};
+		B796E33A1CD3430900F26CFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = DebbyUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Nont.DebbyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Debby;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B796E3021CD3430900F26CFA /* Build configuration list for PBXProject "Debby" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B796E3301CD3430900F26CFA /* Debug */,
+				B796E3311CD3430900F26CFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B796E3321CD3430900F26CFA /* Build configuration list for PBXNativeTarget "Debby" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B796E3331CD3430900F26CFA /* Debug */,
+				B796E3341CD3430900F26CFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B796E3351CD3430900F26CFA /* Build configuration list for PBXNativeTarget "DebbyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B796E3361CD3430900F26CFA /* Debug */,
+				B796E3371CD3430900F26CFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B796E3381CD3430900F26CFA /* Build configuration list for PBXNativeTarget "DebbyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B796E3391CD3430900F26CFA /* Debug */,
+				B796E33A1CD3430900F26CFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B796E3111CD3430900F26CFA /* Debby.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B796E3121CD3430900F26CFA /* Debby.xcdatamodel */,
+			);
+			currentVersion = B796E3121CD3430900F26CFA /* Debby.xcdatamodel */;
+			path = Debby.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = B796E2FF1CD3430900F26CFA /* Project object */;
+}
