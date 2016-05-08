@@ -184,7 +184,11 @@ class addDebtViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         but7.layer.borderColor = UIColor(red: 60/255, green: 27/255, blue: 112/255, alpha: 1).CGColor
         but8.layer.borderColor = UIColor(red: 232/255, green: 182/255, blue: 42/255, alpha: 1).CGColor
         picker?.delegate = self
-        
+        fullPriceTextField.delegate = self
+        downTextField.delegate = self
+        interestTextField.delegate = self
+        instalmentTextField.delegate = self
+        descriptionTextField.delegate = self
         // Do any additional setup after loading the view.
         
     }
@@ -194,6 +198,10 @@ class addDebtViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         borderButtom(interestTextField)
         borderButtom(instalmentTextField)
         borderButtom(descriptionTextField)
+    }
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     func borderButtom(textField:UITextField){
         let border = CALayer()
