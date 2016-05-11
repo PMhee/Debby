@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Debby/addDebtViewController.swift"
-            timestampString = "484560946.185192"
+            timestampString = "484657567.602479"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
             landmarkName = "clickCalculate(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Debby/DebtTableViewController.swift"
-            timestampString = "484648735.739192"
+            timestampString = "484658319.179027"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
             landmarkName = "addData()"
             landmarkType = "5">
          </BreakpointContent>

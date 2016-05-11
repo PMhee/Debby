@@ -26,8 +26,8 @@ class addDebtViewController: UIViewController,UITextFieldDelegate,UINavigationCo
     @IBOutlet weak var view7: UIImageView!
     @IBOutlet weak var view8: UIImageView!
     @IBOutlet weak var view6: UIImageView!
-    var type :String!
-    var sum : Double!
+    var type  = "type"
+    var sum = 0.0
     var picker:UIImagePickerController?=UIImagePickerController()
     @IBAction func clickBut1(sender: UIButton) {
         self.type = "Car"
@@ -118,7 +118,13 @@ class addDebtViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         but8.layer.borderWidth = 1
     }
     @IBAction func clickAddDebt(sender: UIButton) {
-        if self.descriptionTextField.text! != "" || self.fullPriceTextField.text! != "" || self.interestTextField.text! != "" || instalmentTextField.text! != "" || self.sum != 0.0 || self.type != "" {
+        print(self.type)
+        print(self.descriptionTextField.text!)
+        print(self.fullPriceTextField.text!)
+        print(self.interestTextField.text!)
+        print(self.instalmentTextField.text!)
+        print(self.sum)
+        if self.descriptionTextField.text! != "" && self.fullPriceTextField.text! != "" && instalmentTextField.text! != "" && self.sum != 0.0 && self.type != "type" {
             let realm = RLMRealm.defaultRealm()
             let expense = Expense()
             realm.beginWriteTransaction()
@@ -129,16 +135,23 @@ class addDebtViewController: UIViewController,UITextFieldDelegate,UINavigationCo
                 expense.downPrice = 0.0
             }
             expense.fullPrice = Double(fullPriceTextField.text!)!
+            if interestTextField.text! == "" {
+                expense.interest = 0.0
+            }else{
             expense.interest = Double(interestTextField.text!)!
+            }
             expense.period = Double(instalmentTextField.text!)!
             expense.type = self.type
             expense.sumDebt = self.sum
             expense.title = descriptionTextField.text!
             realm.addObject(expense)
             try! realm.commitWriteTransaction()
-            
+            performSegueWithIdentifier("add", sender: self)
         }else{
-            
+            let alertController = UIAlertController(title: "Error", message:
+                "You didn't complete add debt", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+            self.presentViewController(alertController, animated: true, completion: nil)
         }
     }
     @IBOutlet weak var descriptionTextField: UITextField!

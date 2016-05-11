@@ -13,19 +13,24 @@ class Calculate{
         
     }
     internal func normalDebtCal(full:Double,down:Double,interest:Double,time:Double) -> Double{
-        if full != 0 || interest != 0 || time != 0{
+        if full != 0 && time != 0{
         var interestAll: Double!
         if down != 0 {
             interestAll = ((full-down)*interest)/100
+            var sum  = full
+            sum -= down
+            sum += interestAll
+            sum = sum/time
+            return sum
+
         }else{
             interestAll = (full*interest)/100
+            var sum = full
+            sum += interestAll
+            sum = sum/time
+            return sum
         }
-        var sum : Double!
-        var f = full
-        f += interestAll
-        sum = f/time
-        return sum
-    }else{
+           }else{
             return 0.0
     }
     }

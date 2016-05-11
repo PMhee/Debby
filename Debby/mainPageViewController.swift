@@ -157,21 +157,56 @@ class mainPageViewController: UIViewController,UIPopoverPresentationControllerDe
         var minM = DBL_MAX
         var maxM = DBL_MIN
         var sum = 0.0
+        let realm = RLMRealm.defaultRealm()
+        realm.beginWriteTransaction()
+        let s = allExpense[0] as! Expense
+        let dateFormat = NSDateFormatter()
+        dateFormat.dateFormat = "yyyy-MM-dd"
+        s.date = dateFormat.dateFromString("2015-07-12")
+        try! realm.commitWriteTransaction()
         if allExpense.count > 0 {
             for i in 0...allExpense.count-1{
+                let date = NSDate()
+                let calendar = NSCalendar.currentCalendar()
+                let components = calendar.components([.Day , .Month , .Year], fromDate: date)
+                let y1 =  components.year
+                let m1 = components.month
+                let d1 = components.day
+                let start = allExpense[i].valueForKey("date") as! NSDate
+                let com = calendar.components([.Day , .Month , .Year], fromDate: start)
+                let y2 =  com.year
+                let m2 = com.month
+                let d2 = com.day
+                var end = 0
+                if y1-y2 > 1 {
+                    end = (y1-y2-1)*12
+                    var cal = m1-m2-1
+                    if cal < 0 {
+                        cal += 2*cal
+                    }
+                    end += cal
+                }else{
+                    if y1-y2 == 1{
+                        end = 12 - m2
+                        end += m1-1
+                    }else{
+                    end = m1-m2-1
+                    }
+                }
                 if minM > (allExpense[i].valueForKey("sumDebt")! as! Double) {
                     minM = allExpense[i].valueForKey("sumDebt")! as! Double
                 }
                 if maxM < (allExpense[i].valueForKey("sumDebt")! as! Double) {
                     maxM = allExpense[i].valueForKey("sumDebt")! as! Double
                 }
-                if minT > (allExpense[i].valueForKey("period")! as! Double){
-                    minT = allExpense[i].valueForKey("period")! as! Double
+                if minT > (allExpense[i].valueForKey("period")! as! Double - Double(end)){
+                    minT = allExpense[i].valueForKey("period")! as! Double - Double(end)
                 }
-                if maxT < (allExpense[i].valueForKey("period")! as! Double){
-                    maxT = allExpense[i].valueForKey("period")! as! Double
+                if maxT < (allExpense[i].valueForKey("period")! as! Double - Double(end)){
+                    maxT = allExpense[i].valueForKey("period")! as! Double - Double(end)
                 }
                 sum += allExpense[i].valueForKey("sumDebt")! as! Double
+                
             }
             var sal :Double!
             if salary.count < 1{
@@ -180,7 +215,6 @@ class mainPageViewController: UIViewController,UIPopoverPresentationControllerDe
             }else{
                 sal = salary[0].valueForKey("salary")! as! Double
             }
-           
             let exp : Double = sum
             let numberFormatter = NSNumberFormatter()
             numberFormatter.internationalCurrencySymbol = "THB "
