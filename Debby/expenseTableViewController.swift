@@ -9,17 +9,32 @@
 import UIKit
 
 class expenseTableViewController: UITableViewController {
-
+    var allExpense = [Expense]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        addData()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
+    func addData(){
+        let expense = Expense.allObjects()
+        if expense.count > 0 {
+            for i in 0...expense.count-1 {
+                print(expense[i].valueForKey("date")! as! NSDate)
+                print(expense[i].valueForKey("title")! as! String)
+                print(expense[i].valueForKey("downPrice")! as! Double)
+                print(expense[i].valueForKey("fullPrice")! as! Double)
+                print(expense[i].valueForKey("interest")! as! Double)
+                print(expense[i].valueForKey("period")! as! Double)
+                print(expense[i].valueForKey("sumDebt")! as! Double)
+                print(expense[i].valueForKey("type")! as! String)
+                allExpense.append(expense[i] as! Expense)
+            }
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -29,11 +44,20 @@ class expenseTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 10
+        return allExpense.count
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         cell.selectionStyle = UITableViewCellSelectionStyle.None
+        let pic = cell.viewWithTag(1) as! UIImageView
+        pic.image = UIImage(named: allExpense[indexPath.row].valueForKey("type")! as! String)
+        let type = cell.viewWithTag(2) as! UILabel
+        type.text = (allExpense[indexPath.row].valueForKey("type")! as? String)?.uppercaseString
+        let sum = cell.viewWithTag(3) as! UILabel
+        var numberFormatter = NSNumberFormatter()
+        numberFormatter.internationalCurrencySymbol = "THB "
+        numberFormatter.numberStyle = NSNumberFormatterStyle.CurrencyISOCodeStyle
+        sum.text = numberFormatter.stringFromNumber(allExpense[indexPath.row].valueForKey("sumDebt")! as! NSNumber)!
         return cell
     }
     /*

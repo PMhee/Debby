@@ -15,6 +15,7 @@ class Expense:RLMObject{
     dynamic var downPrice : Double = 0.0
     dynamic var interest : Double = 0.0
     dynamic var period : Double = 0.0
+    dynamic var sumDebt : Double = 0.0
     dynamic var title: String = ""
     dynamic var image : String = ""
 }

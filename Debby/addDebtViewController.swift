@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Realm
 class addDebtViewController: UIViewController,UITextFieldDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     @IBOutlet weak var debby: UIButton!
     @IBOutlet weak var but1: UIButton!
@@ -27,8 +27,10 @@ class addDebtViewController: UIViewController,UITextFieldDelegate,UINavigationCo
     @IBOutlet weak var view8: UIImageView!
     @IBOutlet weak var view6: UIImageView!
     var type :String!
+    var sum : Double!
     var picker:UIImagePickerController?=UIImagePickerController()
     @IBAction func clickBut1(sender: UIButton) {
+        self.type = "Car"
         but1.layer.borderWidth = 1
         but2.layer.borderWidth = 0
         but3.layer.borderWidth = 0
@@ -39,6 +41,7 @@ class addDebtViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         but8.layer.borderWidth = 0
     }
     @IBAction func clickBut2(sender: UIButton) {
+        self.type = "Tv"
         but1.layer.borderWidth = 0
         but2.layer.borderWidth = 1
         but3.layer.borderWidth = 0
@@ -49,6 +52,7 @@ class addDebtViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         but8.layer.borderWidth = 0
     }
     @IBAction func clickBut3(sender: UIButton) {
+        self.type = "Telephone"
         but1.layer.borderWidth = 0
         but2.layer.borderWidth = 0
         but3.layer.borderWidth = 1
@@ -59,6 +63,7 @@ class addDebtViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         but8.layer.borderWidth = 0
     }
     @IBAction func clickBut4(sender: UIButton) {
+        self.type = "Washing Machine"
         but1.layer.borderWidth = 0
         but2.layer.borderWidth = 0
         but3.layer.borderWidth = 0
@@ -69,6 +74,7 @@ class addDebtViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         but8.layer.borderWidth = 0
     }
     @IBAction func clickBut5(sender: UIButton) {
+        self.type = "Home"
         but1.layer.borderWidth = 0
         but2.layer.borderWidth = 0
         but3.layer.borderWidth = 0
@@ -79,6 +85,7 @@ class addDebtViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         but8.layer.borderWidth = 0
     }
     @IBAction func clickBut6(sender: UIButton) {
+        self.type = "Refrigerator"
         but1.layer.borderWidth = 0
         but2.layer.borderWidth = 0
         but3.layer.borderWidth = 0
@@ -89,6 +96,7 @@ class addDebtViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         but8.layer.borderWidth = 0
     }
     @IBAction func clickBut7(sender: UIButton) {
+        self.type = "Air Condition"
         but1.layer.borderWidth = 0
         but2.layer.borderWidth = 0
         but3.layer.borderWidth = 0
@@ -99,6 +107,7 @@ class addDebtViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         but8.layer.borderWidth = 0
     }
     @IBAction func clickBut8(sender: UIButton) {
+        self.type = "Money"
         but1.layer.borderWidth = 0
         but2.layer.borderWidth = 0
         but3.layer.borderWidth = 0
@@ -107,6 +116,30 @@ class addDebtViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         but6.layer.borderWidth = 0
         but7.layer.borderWidth = 0
         but8.layer.borderWidth = 1
+    }
+    @IBAction func clickAddDebt(sender: UIButton) {
+        if self.descriptionTextField.text! != "" || self.fullPriceTextField.text! != "" || self.interestTextField.text! != "" || instalmentTextField.text! != "" || self.sum != 0.0 || self.type != "" {
+            let realm = RLMRealm.defaultRealm()
+            let expense = Expense()
+            realm.beginWriteTransaction()
+            expense.date = NSDate()
+            if downTextField.text != ""{
+                expense.downPrice = Double(downTextField.text!)!
+            }else{
+                expense.downPrice = 0.0
+            }
+            expense.fullPrice = Double(fullPriceTextField.text!)!
+            expense.interest = Double(interestTextField.text!)!
+            expense.period = Double(instalmentTextField.text!)!
+            expense.type = self.type
+            expense.sumDebt = self.sum
+            expense.title = descriptionTextField.text!
+            realm.addObject(expense)
+            try! realm.commitWriteTransaction()
+            
+        }else{
+            
+        }
     }
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var photo: UIButton!
@@ -154,10 +187,12 @@ class addDebtViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         }
         if instalmentTextField.text! != "" {
             time = Double(instalmentTextField.text!)!
+            print(time)
         }else{
             time = 0
         }
-        calMoney.text =  Calculate.shareInstance.normalDebtCal(full,down: down,interest: interest,time: time)
+        calMoney.text =  "THB "+String(format:"%.2f",Calculate.shareInstance.normalDebtCal(full,down: down,interest: interest,time: time))
+        self.sum = Calculate.shareInstance.normalDebtCal(full,down: down,interest: interest,time: time)
     }
     @IBOutlet weak var fullPriceTextField: UITextField!
     @IBOutlet weak var downTextField: UITextField!
@@ -217,15 +252,15 @@ class addDebtViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

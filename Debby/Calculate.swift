@@ -12,7 +12,7 @@ class Calculate{
     private init(){
         
     }
-    internal func normalDebtCal(full:Double,down:Double,interest:Double,time:Double) -> String{
+    internal func normalDebtCal(full:Double,down:Double,interest:Double,time:Double) -> Double{
         if full != 0 || interest != 0 || time != 0{
         var interestAll: Double!
         if down != 0 {
@@ -24,9 +24,9 @@ class Calculate{
         var f = full
         f += interestAll
         sum = f/time
-        return "THB "+String(format: "%.2f", sum)
+        return sum
     }else{
-            return "THB 0.00"
+            return 0.0
     }
     }
 }

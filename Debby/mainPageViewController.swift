@@ -10,8 +10,10 @@ import UIKit
 import CoreData
 import Realm
 class mainPageViewController: UIViewController,UIPopoverPresentationControllerDelegate {
+    @IBOutlet weak var MTotal: UILabel!
     @IBOutlet weak var mSalary: UILabel!
     @IBOutlet weak var mExpense: UILabel!
+    @IBOutlet weak var monthLeft: UILabel!
     var animateDistance = CGFloat()
     var Money = [NSManagedObject]()
     @IBOutlet var keyboardHeightLayoutConstraint: NSLayoutConstraint?
@@ -95,10 +97,14 @@ class mainPageViewController: UIViewController,UIPopoverPresentationControllerDe
                 self.mSalary.text = "THB 0.00"
         }else{
             var numberFormatter = NSNumberFormatter()
-            numberFormatter.internationalCurrencySymbol = "THB"
+            numberFormatter.internationalCurrencySymbol = "THB "
             numberFormatter.numberStyle = NSNumberFormatterStyle.CurrencyISOCodeStyle
             self.mSalary.text = numberFormatter.stringFromNumber(sal[0].valueForKey("salary")! as! NSNumber)!
         }
+        var numberFormatter = NSNumberFormatter()
+        numberFormatter.internationalCurrencySymbol = "THB "
+        numberFormatter.numberStyle = NSNumberFormatterStyle.CurrencyISOCodeStyle
+        self.mExpense.text = numberFormatter.stringFromNumber(calExpence() as! NSNumber)!
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,11 +127,23 @@ class mainPageViewController: UIViewController,UIPopoverPresentationControllerDe
         addNewDebt.layer.cornerRadius = 5
         addSalary.layer.cornerRadius = 5
         addExpense.layer.cornerRadius = 5
-        // Do any additional setup after loading the view.
+                // Do any additional setup after loading the view.
     }
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
+    func calExpence() -> Double{
+    let expense = Expense.allObjects()
+        var sum : Double = 0.0
+    if expense.count > 0 {
+    for i in 0...expense.count-1 {
+    print(expense[i].valueForKey("sumDebt")! as! Double)
+    sum += expense[i].valueForKey("sumDebt")! as! Double
+    }
+    }
+        return sum
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

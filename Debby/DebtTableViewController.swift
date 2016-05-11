@@ -10,7 +10,7 @@ import UIKit
 
 class DebtTableViewController: UITableViewController,UIPopoverPresentationControllerDelegate{
 
-    
+    var allExpense = [Expense]()
     @IBOutlet weak var add: UIBarButtonItem!
     @IBAction func clickAdd(sender: UIBarButtonItem) {
             delay(0.4){
@@ -28,14 +28,16 @@ class DebtTableViewController: UITableViewController,UIPopoverPresentationContro
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        addData()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -44,12 +46,43 @@ class DebtTableViewController: UITableViewController,UIPopoverPresentationContro
     // MARK: - Table view data source
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 10
+        return allExpense.count
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         cell.selectionStyle = UITableViewCellSelectionStyle.None
+        let pic = cell.viewWithTag(1) as! UIImageView
+        pic.image = UIImage(named: allExpense[indexPath.row].valueForKey("type")! as! String)
+        let type = cell.viewWithTag(2) as! UILabel
+        type.text = (allExpense[indexPath.row].valueForKey("type")! as? String)?.uppercaseString
+        let sum = cell.viewWithTag(3) as! UILabel
+        var numberFormatter = NSNumberFormatter()
+        numberFormatter.internationalCurrencySymbol = "THB "
+        numberFormatter.numberStyle = NSNumberFormatterStyle.CurrencyISOCodeStyle
+        sum.text = numberFormatter.stringFromNumber(allExpense[indexPath.row].valueForKey("sumDebt")! as! NSNumber)!
+        let interest = cell.viewWithTag(4) as! UILabel
+        interest.text = "interest rate "+String(Int(allExpense[indexPath.row].valueForKey("interest")! as! Double)) + " %"
+        let time = cell.viewWithTag(5) as! UILabel
+        time.text = "only "+String(Int(allExpense[indexPath.row].valueForKey("period")! as! Double)) + " months left"
+        let tt = cell.viewWithTag(6) as! UILabel
+        tt.text = allExpense[indexPath.row].valueForKey("title")! as! String
         return cell
+    }
+    func addData(){
+        let expense = Expense.allObjects()
+        if expense.count > 0 {
+        for i in 0...expense.count-1 {
+            print(expense[i].valueForKey("date")! as! NSDate)
+            print(expense[i].valueForKey("title")! as! String)
+            print(expense[i].valueForKey("downPrice")! as! Double)
+            print(expense[i].valueForKey("fullPrice")! as! Double)
+            print(expense[i].valueForKey("interest")! as! Double)
+            print(expense[i].valueForKey("period")! as! Double)
+            print(expense[i].valueForKey("sumDebt")! as! Double)
+            print(expense[i].valueForKey("type")! as! String)
+            allExpense.append(expense[i] as! Expense)
+        }
+        }
     }
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
         return .None
