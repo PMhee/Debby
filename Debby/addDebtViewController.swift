@@ -171,7 +171,7 @@ class addDebtViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         var interest:Double!
         var time:Double!
         if fullPriceTextField.text! != "" {
-            full = Double(fullPriceTextField.text!)!
+            full = (fullPriceTextField.text! as! NSString).doubleValue
         }else{
             full = 0
         }
@@ -191,7 +191,10 @@ class addDebtViewController: UIViewController,UITextFieldDelegate,UINavigationCo
         }else{
             time = 0
         }
-        calMoney.text =  "THB "+String(format:"%.2f",Calculate.shareInstance.normalDebtCal(full,down: down,interest: interest,time: time))
+        let numberFormatter = NSNumberFormatter()
+        numberFormatter.internationalCurrencySymbol = "THB "
+        numberFormatter.numberStyle = NSNumberFormatterStyle.CurrencyISOCodeStyle
+        calMoney.text =  numberFormatter.stringFromNumber(Calculate.shareInstance.normalDebtCal(full,down: down,interest: interest,time: time) as NSNumber)!
         self.sum = Calculate.shareInstance.normalDebtCal(full,down: down,interest: interest,time: time)
     }
     @IBOutlet weak var fullPriceTextField: UITextField!

@@ -5,6 +5,7 @@ use_frameworks!
 
 target 'Debby' do
   pod 'RealmSwift'
+  pod 'Charts'
 end
 
 target 'DebbyTests' do

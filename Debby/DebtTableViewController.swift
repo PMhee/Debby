@@ -9,7 +9,9 @@
 import UIKit
 
 class DebtTableViewController: UITableViewController,UIPopoverPresentationControllerDelegate{
-
+    var selectedCellIndexPath: NSIndexPath?
+    let selectedCellHeight: CGFloat = 300.0
+    let unselectedCellHeight: CGFloat = 101.0
     var allExpense = [Expense]()
     @IBOutlet weak var add: UIBarButtonItem!
     @IBAction func clickAdd(sender: UIBarButtonItem) {
@@ -67,6 +69,28 @@ class DebtTableViewController: UITableViewController,UIPopoverPresentationContro
         let tt = cell.viewWithTag(6) as! UILabel
         tt.text = allExpense[indexPath.row].valueForKey("title")! as! String
         return cell
+    }
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print(selectedCellIndexPath)
+        if selectedCellIndexPath != nil && selectedCellIndexPath == indexPath {
+            selectedCellIndexPath = nil
+        } else {
+            selectedCellIndexPath = indexPath
+        }
+        
+        tableView.beginUpdates()
+        tableView.endUpdates()
+        
+        if selectedCellIndexPath != nil {
+            // This ensures, that the cell is fully visible once expanded
+            tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .None, animated: true)
+        }
+    }
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if selectedCellIndexPath == indexPath {
+                return selectedCellHeight
+        }
+        return unselectedCellHeight
     }
     func addData(){
         let expense = Expense.allObjects()

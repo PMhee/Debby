@@ -10,12 +10,17 @@ import UIKit
 import CoreData
 import Realm
 class mainPageViewController: UIViewController,UIPopoverPresentationControllerDelegate {
-    @IBOutlet weak var MTotal: UILabel!
     @IBOutlet weak var mSalary: UILabel!
     @IBOutlet weak var mExpense: UILabel!
-    @IBOutlet weak var monthLeft: UILabel!
+    @IBOutlet weak var mTotal: UILabel!
+    @IBOutlet weak var numberDebt: UILabel!
+    @IBOutlet weak var fastDebt: UILabel!
+    @IBOutlet weak var slowDebt: UILabel!
+    @IBOutlet weak var smallDebt: UILabel!
+    @IBOutlet weak var bigDebt: UILabel!
     var animateDistance = CGFloat()
     var Money = [NSManagedObject]()
+    var allExpense = [Expense]()
     @IBOutlet var keyboardHeightLayoutConstraint: NSLayoutConstraint?
     @IBAction func clickAddNewDebt(sender: UIButton) {
         
@@ -51,9 +56,9 @@ class mainPageViewController: UIViewController,UIPopoverPresentationControllerDe
                                     }
         })
         delay(0.4){
-                self.performSegueWithIdentifier("popSalary", sender: self)
+            self.performSegueWithIdentifier("popSalary", sender: self)
         }
-        }
+    }
     @IBOutlet weak var addSalary: UIButton!
     
     
@@ -69,8 +74,8 @@ class mainPageViewController: UIViewController,UIPopoverPresentationControllerDe
         })
         delay(0.4){
             self.performSegueWithIdentifier("popExpense", sender: self)
-                   }
-
+        }
+        
     }
     @IBOutlet weak var addExpense: UIButton!
     @IBAction func clickSetting(sender: UIButton) {
@@ -86,7 +91,7 @@ class mainPageViewController: UIViewController,UIPopoverPresentationControllerDe
         delay(0.4){
             
         }
-
+        
     }
     @IBOutlet weak var addSetting: UIButton!
     @IBOutlet weak var addNewDebt: UIButton!
@@ -94,7 +99,7 @@ class mainPageViewController: UIViewController,UIPopoverPresentationControllerDe
         super.viewWillAppear(true)
         var sal = Income.allObjects()
         if sal.count < 1{
-                self.mSalary.text = "THB 0.00"
+            self.mSalary.text = "THB 0.00"
         }else{
             var numberFormatter = NSNumberFormatter()
             numberFormatter.internationalCurrencySymbol = "THB "
@@ -105,16 +110,17 @@ class mainPageViewController: UIViewController,UIPopoverPresentationControllerDe
         numberFormatter.internationalCurrencySymbol = "THB "
         numberFormatter.numberStyle = NSNumberFormatterStyle.CurrencyISOCodeStyle
         self.mExpense.text = numberFormatter.stringFromNumber(calExpence() as! NSNumber)!
+        initAllData()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-       print(RLMRealm.defaultRealm().path)
-//        let realm = RLMRealm.defaultRealm()
-//        let salary = Income()
-//        salary.salary = 300.0
-//        realm.beginWriteTransaction()
-//        realm.addObject(salary)
-//        try! realm.commitWriteTransaction()
+        print(RLMRealm.defaultRealm().path)
+        //        let realm = RLMRealm.defaultRealm()
+        //        let salary = Income()
+        //        salary.salary = 300.0
+        //        realm.beginWriteTransaction()
+        //        realm.addObject(salary)
+        //        try! realm.commitWriteTransaction()
         var popoverContent = (self.storyboard?.instantiateViewControllerWithIdentifier("popSalary"))! as UIViewController
         var nav = UINavigationController(rootViewController: popoverContent)
         nav.modalPresentationStyle = UIModalPresentationStyle.Popover
@@ -127,23 +133,87 @@ class mainPageViewController: UIViewController,UIPopoverPresentationControllerDe
         addNewDebt.layer.cornerRadius = 5
         addSalary.layer.cornerRadius = 5
         addExpense.layer.cornerRadius = 5
-                // Do any additional setup after loading the view.
+        // Do any additional setup after loading the view.
     }
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     func calExpence() -> Double{
-    let expense = Expense.allObjects()
+        let expense = Expense.allObjects()
         var sum : Double = 0.0
-    if expense.count > 0 {
-    for i in 0...expense.count-1 {
-    print(expense[i].valueForKey("sumDebt")! as! Double)
-    sum += expense[i].valueForKey("sumDebt")! as! Double
-    }
-    }
+        if expense.count > 0 {
+            for i in 0...expense.count-1 {
+                print(expense[i].valueForKey("sumDebt")! as! Double)
+                allExpense.append(expense[i] as! Expense)
+                sum += expense[i].valueForKey("sumDebt")! as! Double
+            }
+        }
         return sum
     }
-    
+    func initAllData(){
+        var salary = Income.allObjects()
+        var minT = DBL_MAX
+        var maxT  = DBL_MIN
+        var minM = DBL_MAX
+        var maxM = DBL_MIN
+        var sum = 0.0
+        if allExpense.count > 0 {
+            for i in 0...allExpense.count-1{
+                if minM > (allExpense[i].valueForKey("sumDebt")! as! Double) {
+                    minM = allExpense[i].valueForKey("sumDebt")! as! Double
+                }
+                if maxM < (allExpense[i].valueForKey("sumDebt")! as! Double) {
+                    maxM = allExpense[i].valueForKey("sumDebt")! as! Double
+                }
+                if minT > (allExpense[i].valueForKey("period")! as! Double){
+                    minT = allExpense[i].valueForKey("period")! as! Double
+                }
+                if maxT < (allExpense[i].valueForKey("period")! as! Double){
+                    maxT = allExpense[i].valueForKey("period")! as! Double
+                }
+                sum += allExpense[i].valueForKey("sumDebt")! as! Double
+            }
+            var sal :Double!
+            if salary.count < 1{
+                sal = 0.0
+                
+            }else{
+                sal = salary[0].valueForKey("salary")! as! Double
+            }
+           
+            let exp : Double = sum
+            let numberFormatter = NSNumberFormatter()
+            numberFormatter.internationalCurrencySymbol = "THB "
+            numberFormatter.numberStyle = NSNumberFormatterStyle.CurrencyISOCodeStyle
+            let total = sal-exp
+            print(total)
+            mTotal.text = numberFormatter.stringFromNumber(total as NSNumber)!
+            numberDebt.text = String(allExpense.count) + " debts"
+            fastDebt.text = String(Int(minT)) + " m"
+            slowDebt.text = String(Int(maxT)) + " m"
+            numberFormatter.internationalCurrencySymbol = ""
+            smallDebt.text = numberFormatter.stringFromNumber(minM as NSNumber)! + " THB"
+            bigDebt.text = numberFormatter.stringFromNumber(maxM as NSNumber)! + " THB"
+        }else if salary.count > 0{
+            let numberFormatter = NSNumberFormatter()
+            numberFormatter.internationalCurrencySymbol = "THB "
+            numberFormatter.numberStyle = NSNumberFormatterStyle.CurrencyISOCodeStyle
+            let sal = salary[0].valueForKey("salary")! as! Double
+            mTotal.text = numberFormatter.stringFromNumber(sal as NSNumber)!
+            numberDebt.text = "no debt"
+            fastDebt.text = "no debt"
+            slowDebt.text = "no debt"
+            smallDebt.text = "no debt"
+            bigDebt.text = "no debt"
+        }else{
+            mTotal.text = "THB 0.00"
+            numberDebt.text = "no debt"
+            fastDebt.text = "no debt"
+            slowDebt.text = "no debt"
+            smallDebt.text = "no debt"
+            bigDebt.text = "no debt"
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -171,19 +241,19 @@ class mainPageViewController: UIViewController,UIPopoverPresentationControllerDe
             }
             
         }
-
+        
     }
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
         return .None
     }
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
