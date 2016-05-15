@@ -10,9 +10,15 @@ import UIKit
 
 class GoProViewController: UIViewController {
 
+    @IBOutlet weak var goPro: UIButton!
+    @IBAction func goPro(sender: UIButton) {
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        goPro.layer.cornerRadius = 15
+        goPro.layer.borderWidth = 1
+        goPro.layer.borderColor = UIColor(red: 232/255, green: 107/255, blue: 107/255, alpha: 1.0).CGColor
         // Do any additional setup after loading the view.
     }
 

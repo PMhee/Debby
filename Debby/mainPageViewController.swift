@@ -18,6 +18,7 @@ class mainPageViewController: UIViewController,UIPopoverPresentationControllerDe
     @IBOutlet weak var slowDebt: UILabel!
     @IBOutlet weak var smallDebt: UILabel!
     @IBOutlet weak var bigDebt: UILabel!
+    @IBOutlet weak var debbyView: UIView!
     var animateDistance = CGFloat()
     var Money = [NSManagedObject]()
     var allExpense = [Expense]()
@@ -111,6 +112,7 @@ class mainPageViewController: UIViewController,UIPopoverPresentationControllerDe
         numberFormatter.numberStyle = NSNumberFormatterStyle.CurrencyISOCodeStyle
         self.mExpense.text = numberFormatter.stringFromNumber(calExpence() as! NSNumber)!
         initAllData()
+        removeData()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -157,13 +159,13 @@ class mainPageViewController: UIViewController,UIPopoverPresentationControllerDe
         var minM = DBL_MAX
         var maxM = DBL_MIN
         var sum = 0.0
-        let realm = RLMRealm.defaultRealm()
-        realm.beginWriteTransaction()
-        let s = allExpense[0] as! Expense
-        let dateFormat = NSDateFormatter()
-        dateFormat.dateFormat = "yyyy-MM-dd"
-        s.date = dateFormat.dateFromString("2015-07-12")
-        try! realm.commitWriteTransaction()
+//        let realm = RLMRealm.defaultRealm()
+//        realm.beginWriteTransaction()
+//        let s = allExpense[2] as! Expense
+//        let dateFormat = NSDateFormatter()
+//        dateFormat.dateFormat = "yyyy-MM-dd"
+//        s.date = dateFormat.dateFromString("1994-01-12")
+//        try! realm.commitWriteTransaction()
         if allExpense.count > 0 {
             for i in 0...allExpense.count-1{
                 let date = NSDate()
@@ -193,6 +195,9 @@ class mainPageViewController: UIViewController,UIPopoverPresentationControllerDe
                     end = m1-m2-1
                     }
                 }
+                if end < 0 {
+                    end = 0
+                }
                 if minM > (allExpense[i].valueForKey("sumDebt")! as! Double) {
                     minM = allExpense[i].valueForKey("sumDebt")! as! Double
                 }
@@ -221,6 +226,11 @@ class mainPageViewController: UIViewController,UIPopoverPresentationControllerDe
             numberFormatter.numberStyle = NSNumberFormatterStyle.CurrencyISOCodeStyle
             let total = sal-exp
             print(total)
+            if total < 0 {
+                mTotal.textColor = UIColor(red: 214/255, green: 50/255, blue: 60/255, alpha: 1)
+            }else{
+                mTotal.textColor = UIColor(red: 95/255, green: 180/255, blue: 116/255, alpha: 1)
+            }
             mTotal.text = numberFormatter.stringFromNumber(total as NSNumber)!
             numberDebt.text = String(allExpense.count) + " debts"
             fastDebt.text = String(Int(minT)) + " m"
@@ -277,8 +287,58 @@ class mainPageViewController: UIViewController,UIPopoverPresentationControllerDe
         }
         
     }
+    func removeData(){
+        let realm = RLMRealm.defaultRealm()
+        let deletedValue = "two"
+        realm.beginWriteTransaction()
+        if allExpense.count > 0 {
+        for  i in 0...allExpense.count-1{
+            let date = NSDate()
+            let calendar = NSCalendar.currentCalendar()
+            let components = calendar.components([.Day , .Month , .Year], fromDate: date)
+            let y1 =  components.year
+            let m1 = components.month
+            let d1 = components.day
+            let start = allExpense[i].valueForKey("date") as! NSDate
+            let com = calendar.components([.Day , .Month , .Year], fromDate: start)
+            let y2 =  com.year
+            let m2 = com.month
+            let d2 = com.day
+            var end = 0
+            if y1-y2 > 1 {
+                end = (y1-y2-1)*12
+                var cal = m1-m2-1
+                if cal < 0 {
+                    cal += 2*cal
+                }
+                end += cal
+            }else{
+                if y1-y2 == 1{
+                    end = 12 - m2
+                    end += m1-1
+                }else{
+                    end = m1-m2-1
+                }
+            }
+            if end < 0 {
+                end = 0
+            }
+            if allExpense[i].valueForKey("period")! as! Double - Double(end) == 0 {
+                realm.deleteObject(allExpense[i])
+            }
+        }
+        try! realm.commitWriteTransaction()
+        }
+    }
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
         return .None
+    }
+    override func shouldAutorotate() -> Bool {
+        return false
+    }
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
     }
     /*
      // MARK: - Navigation

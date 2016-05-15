@@ -10,7 +10,7 @@ import UIKit
 import Charts
 class DebtTableViewController: UITableViewController,UIPopoverPresentationControllerDelegate{
     var selectedCellIndexPath: NSIndexPath?
-    let selectedCellHeight: CGFloat = 400.0
+    let selectedCellHeight: CGFloat = 360.0
     let unselectedCellHeight: CGFloat = 101.0
     var allExpense = [Expense]()
     @IBOutlet weak var add: UIBarButtonItem!
@@ -31,7 +31,6 @@ class DebtTableViewController: UITableViewController,UIPopoverPresentationContro
         super.viewDidLoad()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
@@ -52,7 +51,7 @@ class DebtTableViewController: UITableViewController,UIPopoverPresentationContro
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         cell.selectionStyle = UITableViewCellSelectionStyle.None
-        let data = ["Full Price","Paid"]
+        let data = ["Paid","Left"]
         let date = NSDate()
         let calendar = NSCalendar.currentCalendar()
         let components = calendar.components([.Day , .Month , .Year], fromDate: date)
@@ -69,7 +68,7 @@ class DebtTableViewController: UITableViewController,UIPopoverPresentationContro
             end = (y1-y2-1)*12
             var cal = m1-m2-1
             if cal < 0 {
-                cal += 2*cal
+                cal += -cal
             }
             end += cal
         }else{
@@ -92,13 +91,40 @@ class DebtTableViewController: UITableViewController,UIPopoverPresentationContro
         let interest = cell.viewWithTag(4) as! UILabel
         interest.text = "interest rate "+String(Int(allExpense[indexPath.row].valueForKey("interest")! as! Double)) + " %"
         let time = cell.viewWithTag(5) as! UILabel
-        time.text = "only "+String(Int((allExpense[indexPath.row].valueForKey("period") as! Double)-Double(end))) + " months left"
+        if end < 0 {
+            end = 0
+        }
+        if String(Int((allExpense[indexPath.row].valueForKey("period") as! Double)-Double(end))) == "1" {
+            time.text = String(Int((allExpense[indexPath.row].valueForKey("period") as! Double)-Double(end))) + " month left"
+        }else{
+        time.text = String(Int((allExpense[indexPath.row].valueForKey("period") as! Double)-Double(end))) + " months left"
+        }
         let tt = cell.viewWithTag(6) as! UILabel
-        tt.text = allExpense[indexPath.row].valueForKey("title")! as! String
+        tt.text = (allExpense[indexPath.row].valueForKey("title")! as! String).uppercaseString
         let pieChart = cell.viewWithTag(7) as! PieChartView
+        print(end)
         var paid:Double = Double(end)*(allExpense[indexPath.row].valueForKey("sumDebt") as! Double)
-        var number :[Double] = [allExpense[indexPath.row].valueForKey("fullPrice")! as! Double,paid]
+        var number :[Double] = [paid,allExpense[indexPath.row].valueForKey("fullPrice")! as! Double - paid]
         setChart(data, values: number, pieChart: pieChart)
+        pieChart.animate(xAxisDuration: 1.0, yAxisDuration: 1.0)
+        pieChart.drawMarkers = false
+        pieChart.drawSliceTextEnabled = false
+        let view1 = cell.viewWithTag(8)
+        view1?.layer.cornerRadius = 8
+        let view2 = cell.viewWithTag(9)
+        view2?.layer.cornerRadius = 9
+        let view3 = cell.viewWithTag(10)
+        view3?.layer.cornerRadius = 13
+        let fullPrice = cell.viewWithTag(11) as! UILabel
+        fullPrice.text = numberFormatter.stringFromNumber(allExpense[indexPath.row].valueForKey("fullPrice")! as! NSNumber)!
+        let pastMonth = cell.viewWithTag(12) as! UILabel
+        if end <= 1 {
+        pastMonth.text = String(end) + " month ago"
+        }else{
+        pastMonth.text = String(end) + " months ago"
+        }
+        let percent = cell.viewWithTag(13) as! UILabel
+        percent.text = String(format:"%.2f",(paid * 100)/(allExpense[indexPath.row].valueForKey("fullPrice")! as! Double))+" %"
         return cell
     }
     func setChart(dataPoints: [String], values: [Double],pieChart : PieChartView) {
@@ -113,11 +139,11 @@ class DebtTableViewController: UITableViewController,UIPopoverPresentationContro
         let pieChartDataSet = PieChartDataSet(yVals: dataEntries, label: "Units Sold")
         let pieChartData = PieChartData(xVals: dataPoints, dataSet: pieChartDataSet)
         pieChart.data = pieChartData
-        
         var colors: [UIColor] = []
-        let color1 = UIColor(red: 173/255, green: 0/255, blue: 0/255, alpha: 1)
+        let color1 = UIColor(red: 252/255, green: 221/255, blue: 121/255, alpha: 1.0)
+        //red
         colors.append(color1)
-        let color2 = UIColor(red: 214/255, green: 137/255, blue: 16/255, alpha: 1)
+        let color2 = UIColor(red: 232/255, green: 81/255, blue: 83/255, alpha: 1.0) //yellow
         colors.append(color2)
         let color3 = UIColor(red: 51/255, green: 62/255, blue: 90/255, alpha: 1)
         colors.append(color3)
@@ -125,22 +151,23 @@ class DebtTableViewController: UITableViewController,UIPopoverPresentationContro
         colors.append(color4)
         let color5 = UIColor(red: 159/255, green: 208/255, blue: 187/255, alpha: 1)
         colors.append(color5)
-        
         pieChartDataSet.colors = colors
+        
         }
-
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print(selectedCellIndexPath)
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)  {
         if selectedCellIndexPath != nil && selectedCellIndexPath == indexPath {
-            selectedCellIndexPath = nil
+        
+        selectedCellIndexPath = nil
         } else {
+            tableView.reloadData()
             selectedCellIndexPath = indexPath
         }
-        
         tableView.beginUpdates()
         tableView.endUpdates()
         
         if selectedCellIndexPath != nil {
+            
             // This ensures, that the cell is fully visible once expanded
             tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .None, animated: true)
         }

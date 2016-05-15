@@ -24,7 +24,7 @@ public class PieChartView: PieRadarChartViewBase
     /// rect object that represents the bounds of the piechart, needed for drawing the circle
     private var _circleBox = CGRect()
     
-    private var _drawXLabelsEnabled = true
+    private var _drawXLabelsEnabled = false
     
     /// array that holds the width of each pie-slice in degrees
     private var _drawAngles = [CGFloat]()

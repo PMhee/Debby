@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B74679A91CE74A2300D0B8F9 /* GoProViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74679A81CE74A2300D0B8F9 /* GoProViewController.swift */; };
 		B76DAFC61CDDB9F00067C556 /* Calculate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76DAFC51CDDB9F00067C556 /* Calculate.swift */; };
 		B76DAFC81CDF90B20067C556 /* Expence.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76DAFC71CDF90B20067C556 /* Expence.swift */; };
 		B773ED6B1CD6012700A8027E /* popSalaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B773ED6A1CD6012700A8027E /* popSalaryViewController.swift */; };
@@ -48,6 +49,7 @@
 		11DC6F98B776BD7D17697CEA /* Pods-Debby.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Debby.release.xcconfig"; path = "Pods/Target Support Files/Pods-Debby/Pods-Debby.release.xcconfig"; sourceTree = "<group>"; };
 		7A26329C5830F20A71E66251 /* Pods_Debby.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Debby.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A370200D7CEF75E7E8FE2CC0 /* Pods-Debby.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Debby.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Debby/Pods-Debby.debug.xcconfig"; sourceTree = "<group>"; };
+		B74679A81CE74A2300D0B8F9 /* GoProViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoProViewController.swift; sourceTree = "<group>"; };
 		B76DAFC51CDDB9F00067C556 /* Calculate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calculate.swift; sourceTree = "<group>"; };
 		B76DAFC71CDF90B20067C556 /* Expence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expence.swift; sourceTree = "<group>"; };
 		B773ED6A1CD6012700A8027E /* popSalaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = popSalaryViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				B7D302AC1CDA524100A04437 /* Income.swift */,
 				B76DAFC51CDDB9F00067C556 /* Calculate.swift */,
 				B76DAFC71CDF90B20067C556 /* Expence.swift */,
+				B74679A81CE74A2300D0B8F9 /* GoProViewController.swift */,
 			);
 			path = Debby;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				B796E30B1CD3430900F26CFA /* AppDelegate.swift in Sources */,
 				B796E3131CD3430900F26CFA /* Debby.xcdatamodeld in Sources */,
 				B76DAFC61CDDB9F00067C556 /* Calculate.swift in Sources */,
+				B74679A91CE74A2300D0B8F9 /* GoProViewController.swift in Sources */,
 				B76DAFC81CDF90B20067C556 /* Expence.swift in Sources */,
 				B773ED711CD6266100A8027E /* DebtTableViewController.swift in Sources */,
 				B7D302AD1CDA524100A04437 /* Income.swift in Sources */,

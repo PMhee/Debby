@@ -7,19 +7,30 @@
 //
 
 import UIKit
+import Realm
+class settingViewController: UIViewController,UIPopoverPresentationControllerDelegate {
+    @IBAction func clickShare(sender: UIButton) {
+        let vc = UIActivityViewController(activityItems: ["https://www.facebook.com/Debby-1702576426665297/?fref=ts"], applicationActivities: nil)
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
 
-class settingViewController: UIViewController {
-
+    @IBAction func reset(sender: UIButton) {
+        let realm = RLMRealm.defaultRealm()
+        realm.beginWriteTransaction()
+        realm.deleteAllObjects()
+        try! realm.commitWriteTransaction()
+    }
+    @IBAction func contact(sender: UIButton) {
+        if let requestUrl = NSURL(string: "https://www.facebook.com/Debby-1702576426665297/?ref=aymt_homepage_panel") {
+            UIApplication.sharedApplication().openURL(requestUrl)
+        }
+    }
     @IBOutlet weak var upgrade: UIButton!
-    @IBOutlet weak var trial: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         upgrade.layer.cornerRadius = 15
         upgrade.layer.borderWidth = 1
         upgrade.layer.borderColor = UIColor(red: 232/255, green: 107/255, blue: 107/255, alpha: 1.0).CGColor
-        trial.layer.cornerRadius = 15
-        trial.layer.borderWidth = 1
-        trial.layer.borderColor = UIColor(red: 159/255, green: 208/255, blue: 187/255, alpha: 1.0  ).CGColor
         // Do any additional setup after loading the view.
     }
 
@@ -27,7 +38,18 @@ class settingViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .None
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "pro"{
+            let vc = segue.destinationViewController
+            let controller = vc.popoverPresentationController
+            if controller != nil {
+                controller?.delegate = self
+            }
+    }
+    }
 
     /*
     // MARK: - Navigation
